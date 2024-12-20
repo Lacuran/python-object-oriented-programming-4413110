@@ -15,7 +15,7 @@ class Book:
 
     # TODO: create a static method
     @staticmethod
-    def getbooklist():
+    def get_booklist():
         if Book.__booklist == None:
             Book.__booklist = []
         return Book.__booklist
@@ -40,7 +40,7 @@ b1 = Book("sdf", "HARDCOVER")
 b2 = Book("sdf", "PAPERBACK")
 
 # TODO: Use the static method to access a singleton object
-thebooks = Book.getbooklist()
+thebooks = Book.get_booklist()
 thebooks.append(b1)
 thebooks.append(b2)
 print(thebooks)

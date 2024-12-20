@@ -14,13 +14,13 @@ class Book:
 
 
     # TODO: create instance methods
-    def getprice(self):
+    def get_price(self):
         if hasattr(self,"_discount"):
             return self.price - (self.price * self._discount)
         else:
             return self.price
 
-    def setdiscount(self, amount):
+    def set_discount(self, amount):
         self._discount = amount
 
 
@@ -29,12 +29,12 @@ b1 = Book("War and Peace", "mlem", 32, 32.33)
 b2 = Book("The Catcher in the Rye", "mlem mlem", 2312, 99.99)
 
 # TODO: print the price of book1
-print(b1.getprice())
+print(b1.get_price())
 
 # TODO: try setting the discount
-print(b2.getprice())
-b2.setdiscount(0.30)
-print(b2.getprice())
+print(b2.get_price())
+b2.set_discount(0.30)
+print(b2.get_price())
 
 # TODO: properties with double underscores are hidden by the interpreter
 print(b2._Book__secret)
