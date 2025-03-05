@@ -6,52 +6,40 @@
 # that makes them sortable
 from dataclasses import dataclass
 
-@dataclass
+@dataclass(eq=False)
 class Asset():
     price : float
-    
 
-@dataclass
+    def __eq__(self, other):
+        return self.price == other.price
+
+    def __gt__(self, other):
+        return self.price > other.price
+
+    def __lt__(self, other):
+        return self.price < other.price
+
+    def __ge__(self, other):
+        return self.price >= other.price
+
+    def __le__(self, other):
+        return self.price <= other.price
+
+@dataclass(eq=False)
 class Stock(Asset):
     ticker : str
     company : str
 
-    def __eq__(self, other):
-        return self.price == other
-
-    def __gt__(self, other):
-        return self.price > other
-
-    def __lt__(self, other):
-        return self.price < other
-
-    def __ge__(self, other):
-        return self.price.__gt__(other) or self.price.__eq__(other)
-
-    def __le__(self, other):
-        return self.price.__lt__(other) or self.price.__eq__(other)
 
 
-@dataclass
+
+@dataclass(eq=False)
 class Bond(Asset):
     description : str
     duration : int
     interest : float
 
-    def __eq__(self, other):
-        return self.price == other
 
-    def __gt__(self, other):
-        return self.price > other
-
-    def __lt__(self, other):
-        return self.price < other
-
-    def __ge__(self, other):
-        return self.price.__gt__(other) or self.price.__eq__(other)
-
-    def __le__(self, other):
-        return self.price.__lt__(other) or self.price.__eq__(other)
 
 # ~~~~~~~~~ TEST CODE ~~~~~~~~~
 stocks = [
